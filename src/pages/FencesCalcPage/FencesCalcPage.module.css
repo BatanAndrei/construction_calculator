@@ -102,6 +102,23 @@
   border-color: #333;
 }
 
+.extra {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.extraLabel {
+  font-size: 16px;
+}
+
 .calculate {
   flex-shrink: 0;
   width: 100%;
@@ -181,6 +198,14 @@
   .input {
     width: 84px;
     padding: 9px;
+  }
+
+  .extra {
+    padding: 14px;
+  }
+
+  .extraLabel {
+    font-size: 15px;
   }
 
   .totalValue {

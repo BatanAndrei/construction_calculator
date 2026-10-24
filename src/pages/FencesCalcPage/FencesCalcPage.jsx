@@ -8,6 +8,7 @@ const FencesCalcPage = () => {
   const works = location.state?.works || [];
 
   const [volumes, setVolumes] = useState({});
+  const [extra, setExtra] = useState('');
   const [total, setTotal] = useState(null);
 
   const handleChange = (id, value) => {
@@ -15,12 +16,18 @@ const FencesCalcPage = () => {
     setTotal(null);
   };
 
+  const handleExtraChange = (value) => {
+    setExtra(value);
+    setTotal(null);
+  };
+
   const handleCalculate = () => {
-    const sum = works.reduce((acc, work) => {
+    const worksSum = works.reduce((acc, work) => {
       const qty = Number(volumes[work.id]) || 0;
       return acc + qty * work.price;
     }, 0);
-    setTotal(sum);
+    const extraSum = Number(extra) || 0;
+    setTotal(worksSum + extraSum);
   };
 
   if (works.length === 0) {
@@ -63,6 +70,18 @@ const FencesCalcPage = () => {
           </li>
         ))}
       </ul>
+
+      <div className={styles.extra}>
+        <span className={styles.extraLabel}>Непредвиденные</span>
+        <input
+          className={styles.input}
+          type="number"
+          min="0"
+          placeholder="0"
+          value={extra}
+          onChange={(e) => handleExtraChange(e.target.value)}
+        />
+      </div>
 
       <button className={styles.calculate} onClick={handleCalculate}>
         Рассчитать
