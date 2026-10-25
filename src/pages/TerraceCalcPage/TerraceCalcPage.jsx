@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import { playCoinSound } from '../../utils/coinSound';
 import styles from "./TerraceCalcPage.module.css";
 
 const TerraceCalcPage = () => {
@@ -23,6 +24,7 @@ const TerraceCalcPage = () => {
   };
 
   const handleCalculate = () => {
+    playCoinSound();
     const worksSum = works.reduce((acc, work) => {
       const qty = Number(volumes[work.id]) || 0;
       return acc + qty * work.price;
