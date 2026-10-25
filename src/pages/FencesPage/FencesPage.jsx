@@ -31,7 +31,11 @@ const FencesPage = () => {
       <ul className={styles.list}>
         {FENCE_WORKS.map((work) => (
           <li key={work.id}>
-            <label className={styles.row}>
+            <label
+              className={`${styles.row} ${
+                selected.includes(work.id) ? styles.rowActive : ""
+              }`}
+            >
               <input
                 type="checkbox"
                 className={styles.checkbox}

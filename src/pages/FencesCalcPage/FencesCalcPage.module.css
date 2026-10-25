@@ -95,11 +95,15 @@
   background: #fff;
   -webkit-appearance: none;
   appearance: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .input:focus {
   outline: none;
-  border-color: #333;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .extra {
@@ -154,6 +158,7 @@
 .totalValue {
   font-size: 22px;
   font-weight: 700;
+  color: var(--accent);
 }
 
 .empty {
@@ -209,6 +214,7 @@
   }
 
   .totalValue {
-    font-size: 20px;
+    font-size: 22px;
+    color: var(--accent);
   }
 }

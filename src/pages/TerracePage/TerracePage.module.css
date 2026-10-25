@@ -68,10 +68,20 @@
   cursor: pointer;
   transition: border-color 0.15s;
   -webkit-tap-highlight-color: transparent;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.row:hover {
+  background: var(--row-hover);
 }
 
 .row:active {
   border-color: #333;
+}
+
+.rowActive {
+  background: var(--accent-soft);
 }
 
 .checkbox {
@@ -79,7 +89,7 @@
   height: 22px;
   flex-shrink: 0;
   cursor: pointer;
-  accent-color: #333;
+  accent-color: var(--accent);
 }
 
 .rowTitle {
@@ -137,6 +147,12 @@
   .row {
     min-height: 52px;
     padding: 14px;
+    border-radius: 6px;
+    transition: background-color 0.15s ease;
+  }
+
+  .row:hover {
+    background: var(--row-hover);
   }
 
   .rowTitle {
