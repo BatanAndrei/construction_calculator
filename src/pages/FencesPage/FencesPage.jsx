@@ -15,7 +15,7 @@ const FencesPage = () => {
 
   const handleNext = () => {
     const chosen = FENCE_WORKS.filter((w) => selected.includes(w.id));
-    navigate('/work/zabory/calc', { state: { works: chosen } });
+    navigate('/work/zabor/calc', { state: { works: chosen } });
   };
 
   return (
@@ -24,7 +24,7 @@ const FencesPage = () => {
         ← Назад
       </button>
 
-      <h1 className={styles.title}>Заборы</h1>
+      <h1 className={styles.title}>Забор</h1>
       <p className={styles.subtitle}>Выберите работы</p>
 
       <ul className={styles.list}>

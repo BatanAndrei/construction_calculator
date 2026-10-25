@@ -33,7 +33,7 @@ const FencesCalcPage = () => {
   if (works.length === 0) {
     return (
       <div className={styles.page}>
-        <button className={styles.back} onClick={() => navigate('/work/zabory')}>
+        <button className={styles.back} onClick={() => navigate('/work/zabor')}>
           ← Назад
         </button>
         <p className={styles.empty}>Работы не выбраны</p>
@@ -43,11 +43,11 @@ const FencesCalcPage = () => {
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate('/work/zabory')}>
+      <button className={styles.back} onClick={() => navigate('/work/zabor')}>
         ← Назад
       </button>
 
-      <h1 className={styles.title}>Заборы — объёмы</h1>
+      <h1 className={styles.title}>Забор — объёмы</h1>
       <p className={styles.subtitle}>Укажите объём по каждой работе</p>
 
       <ul className={styles.list}>
