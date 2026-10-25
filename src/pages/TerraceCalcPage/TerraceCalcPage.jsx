@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import styles from './TerraceCalcPage.module.css';
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./TerraceCalcPage.module.css";
 
 const TerraceCalcPage = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ const TerraceCalcPage = () => {
   const works = location.state?.works || [];
 
   const [volumes, setVolumes] = useState({});
-  const [extra, setExtra] = useState('');
+  const [extra, setExtra] = useState("");
   const [total, setTotal] = useState(null);
 
   const handleChange = (id, value) => {
@@ -33,7 +33,10 @@ const TerraceCalcPage = () => {
   if (works.length === 0) {
     return (
       <div className={styles.page}>
-        <button className={styles.back} onClick={() => navigate('/work/terassa')}>
+        <button
+          className={styles.back}
+          onClick={() => navigate("/work/terassa")}
+        >
           ← Назад
         </button>
         <p className={styles.empty}>Работы не выбраны</p>
@@ -43,7 +46,7 @@ const TerraceCalcPage = () => {
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate('/work/terassa')}>
+      <button className={styles.back} onClick={() => navigate("/work/terassa")}>
         ← Назад
       </button>
 
@@ -64,7 +67,7 @@ const TerraceCalcPage = () => {
               type="number"
               min="0"
               placeholder="0"
-              value={volumes[work.id] || ''}
+              value={volumes[work.id] || ""}
               onChange={(e) => handleChange(work.id, e.target.value)}
             />
           </li>
@@ -91,7 +94,7 @@ const TerraceCalcPage = () => {
         <div className={styles.total}>
           <span>Итого:</span>
           <span className={styles.totalValue}>
-            {total.toLocaleString('ru-RU')} Br
+            {total.toLocaleString("ru-RU")} Br
           </span>
         </div>
       )}

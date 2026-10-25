@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FENCE_WORKS } from '../../constants/works';
-import styles from './FencesPage.module.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FENCE_WORKS } from "../../constants/works";
+import styles from "./FencesPage.module.css";
 
 const FencesPage = () => {
   const navigate = useNavigate();
@@ -15,12 +15,12 @@ const FencesPage = () => {
 
   const handleNext = () => {
     const chosen = FENCE_WORKS.filter((w) => selected.includes(w.id));
-    navigate('/work/zabor/calc', { state: { works: chosen } });
+    navigate("/work/zabor/calc", { state: { works: chosen } });
   };
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate('/')}>
+      <button className={styles.back} onClick={() => navigate("/")}>
         ← Назад
       </button>
 

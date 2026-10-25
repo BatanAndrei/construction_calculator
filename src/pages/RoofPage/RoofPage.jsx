@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ROOF_WORKS } from '../../constants/works';
-import styles from './RoofPage.module.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ROOF_WORKS } from "../../constants/works";
+import styles from "./RoofPage.module.css";
 
 const RoofPage = () => {
   const navigate = useNavigate();
@@ -15,12 +15,12 @@ const RoofPage = () => {
 
   const handleNext = () => {
     const chosen = ROOF_WORKS.filter((w) => selected.includes(w.id));
-    navigate('/work/krysha/calc', { state: { works: chosen } });
+    navigate("/work/krysha/calc", { state: { works: chosen } });
   };
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate('/')}>
+      <button className={styles.back} onClick={() => navigate("/")}>
         ← Назад
       </button>
 

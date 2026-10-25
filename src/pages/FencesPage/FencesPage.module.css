@@ -43,13 +43,13 @@
 
 .list {
   flex: 1;
-  min-height: 0;              /* обязательно, иначе flex-ребёнок не даст overflow */
+  min-height: 0; /* обязательно, иначе flex-ребёнок не даст overflow */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
 
   list-style: none;
-  padding: 0 4px 0 0;         /* место под скроллбар, чтобы не наезжал на карточки */
+  padding: 0 4px 0 0; /* место под скроллбар, чтобы не наезжал на карточки */
   margin: 0 0 24px;
   display: flex;
   flex-direction: column;
