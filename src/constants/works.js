@@ -23,7 +23,7 @@ export const FENCE_WORKS = [
   { id: 'razmetka-i-burenie-lunok',      title: 'Разметка участка и бурение лунок',   unit: 'шт.',  price: 20 },
   { id: 'ustroystvo-lentochnogo-fundamenta', title: 'Устройство ленточного фундамента', unit: 'п.м.', price: 65 },
   { id: 'ustanovka-stolbov-s-betonirovaniem', title: 'Установка столбов с бетонированием', unit: 'шт.', price: 25 },
-  { id: 'ustanovka-stolbov-na-betonnoe-osnovanie', title: 'Установка столбов на бетонное основание', unit: 'шт.', price: 35 },
+  { id: 'ustanovka-stolbov-na-betonnoe-osnovanie', title: 'Установка столбов на бетонное основание', unit: 'шт.', price: 25 },
 
   // Монтаж
   { id: 'montazh-poperechnyh-lag',       title: 'Монтаж поперечных лаг',              unit: 'п.м.', price: 8 },
@@ -54,7 +54,7 @@ export const TERRACE_WORKS = [
 
   // Подготовка и основание
   { id: 'vyemka-grunta-pod-podushku',         title: 'Выемка грунта под песчаную подушку',              unit: 'м³',  price: 30 },
-  { id: 'ukladka-gidroizolyacii-gibkoi',      title: 'Укладка гидроизоляции гибкой',                    unit: 'м²',  price: 35 },
+  { id: 'ukladka-gidroizolyacii-gibkoi',      title: 'Укладка гидроизоляции гибкой',                    unit: 'м²',  price: 12 },
   { id: 'ukladka-geotekstilya',               title: 'Укладка геотекстиля',                             unit: 'м²',  price: 19 },
   { id: 'ustanovka-svay',                     title: 'Установка свай',                                  unit: 'шт.', price: 40 },
   { id: 'zalivka-monolita',                   title: 'Заливка монолита',                                unit: 'м³',  price: 140 },
@@ -62,13 +62,13 @@ export const TERRACE_WORKS = [
   // Каркас и лаги
   { id: 'montazh-plastikovyh-opor-pod-lagi',  title: 'Монтаж пластиковых опор под лаги',                unit: 'шт.', price: 6 },
   { id: 'montazh-metallokarkasa',             title: 'Монтаж металлокаркаса',                           unit: 'кг.', price: 14 },
-  { id: 'montazh-lag-dpk',                    title: 'Монтаж лаг ДПК',                                  unit: 'п.м.', price: 9 },
+  { id: 'montazh-lag-dpk',                    title: 'Монтаж лаг ДПК',                                  unit: 'п.м.', price: 8 },
   { id: 'montazh-derevyannyh-lag',            title: 'Монтаж деревянных лаг',                           unit: 'п.м.', price: 8 },
 
   // Настил
   { id: 'montazh-dpk-pryamaya',               title: 'Монтаж ДПК прямая',                               unit: 'м²',  price: 32 },
   { id: 'montazh-dpk-diagonalnaya',           title: 'Монтаж ДПК диагональная',                         unit: 'м²',  price: 45 },
-  { id: 'montazh-mpk-pryamaya',               title: 'Монтаж МПК прямая',                               unit: 'м²',  price: 95 },
+  { id: 'montazh-mpk-pryamaya',               title: 'Монтаж МПК прямая',                               unit: 'м²',  price: 80 },
   { id: 'montazh-mpk-diagonalnaya',           title: 'Монтаж МПК диагональная',                         unit: 'м²',  price: 120 },
   { id: 'montazh-listvennicy-otkrytyy-krepezh', title: 'Монтаж лиственницы открытый крепёж',            unit: 'м²',  price: 28 },
   { id: 'montazh-listvennicy-skrytyy-montazh', title: 'Монтаж лиственницы скрытый монтаж',              unit: 'м²',  price: 40 },
