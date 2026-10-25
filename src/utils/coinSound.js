@@ -1,6 +1,6 @@
-const coin = new Audio('/sounds/zvukmonety.mp3');
+const coin = new Audio("/sounds/zvukmonety.mp3");
 coin.volume = 0.4; // 0..1
-coin.preload = 'auto';
+coin.preload = "auto";
 
 export const playCoinSound = () => {
   try {

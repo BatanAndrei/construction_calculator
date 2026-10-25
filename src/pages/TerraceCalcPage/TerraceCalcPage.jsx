@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import { playCoinSound } from '../../utils/coinSound';
+import { playCoinSound } from "../../utils/coinSound";
+import { playPukSound } from "../../utils/pukSound";
 import styles from "./TerraceCalcPage.module.css";
 
 const TerraceCalcPage = () => {
@@ -24,13 +25,20 @@ const TerraceCalcPage = () => {
   };
 
   const handleCalculate = () => {
-    playCoinSound();
     const worksSum = works.reduce((acc, work) => {
       const qty = Number(volumes[work.id]) || 0;
       return acc + qty * work.price;
     }, 0);
     const extraSum = Number(extra) || 0;
-    setTotal(worksSum + extraSum);
+    const result = worksSum + extraSum;
+
+    if (result === 0) {
+      playPukSound();
+    } else {
+      playCoinSound();
+    }
+
+    setTotal(result);
   };
 
   if (works.length === 0) {
