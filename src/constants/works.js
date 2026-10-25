@@ -23,6 +23,7 @@ export const FENCE_WORKS = [
   { id: 'razmetka-i-burenie-lunok',      title: 'Разметка участка и бурение лунок',   unit: 'шт.',  price: 20 },
   { id: 'ustroystvo-lentochnogo-fundamenta', title: 'Устройство ленточного фундамента', unit: 'п.м.', price: 65 },
   { id: 'ustanovka-stolbov-s-betonirovaniem', title: 'Установка столбов с бетонированием', unit: 'шт.', price: 25 },
+  { id: 'ustanovka-stolbov-na-betonnoe-osnovanie', title: 'Установка столбов на бетонное основание', unit: 'шт.', price: 35 },
 
   // Монтаж
   { id: 'montazh-poperechnyh-lag',       title: 'Монтаж поперечных лаг',              unit: 'п.м.', price: 8 },
@@ -53,6 +54,7 @@ export const TERRACE_WORKS = [
 
   // Подготовка и основание
   { id: 'vyemka-grunta-pod-podushku',         title: 'Выемка грунта под песчаную подушку',              unit: 'м³',  price: 30 },
+  { id: 'ukladka-gidroizolyacii-gibkoi',      title: 'Укладка гидроизоляции гибкой',                    unit: 'м²',  price: 35 },
   { id: 'ukladka-geotekstilya',               title: 'Укладка геотекстиля',                             unit: 'м²',  price: 19 },
   { id: 'ustanovka-svay',                     title: 'Установка свай',                                  unit: 'шт.', price: 40 },
   { id: 'zalivka-monolita',                   title: 'Заливка монолита',                                unit: 'м³',  price: 140 },
