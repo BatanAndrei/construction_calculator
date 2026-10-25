@@ -15,6 +15,7 @@
 
 /* Назад */
 .back {
+  align-self: flex-start;
   background: transparent;
   color: inherit;
   padding: 8px 0;
