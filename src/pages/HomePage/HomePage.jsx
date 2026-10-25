@@ -15,11 +15,11 @@ const HomePage = () => {
         {WORKS.map((work) => (
           <li key={work.id}>
             <Button
+              variant="menu"
               className={styles.item}
               onClick={() => navigate(`/work/${work.id}`)}
             >
               <span className={styles.itemTitle}>{work.title}</span>
-              <span className={styles.itemDesc}>{work.desc}</span>
             </Button>
           </li>
         ))}

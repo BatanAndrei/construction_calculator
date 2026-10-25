@@ -45,7 +45,6 @@
 
 .item {
   width: 100%;
-  min-height: 56px;
   text-align: left;
   padding: 16px;
   background: #fff;
@@ -53,16 +52,10 @@
   border-radius: 8px;
   cursor: pointer;
   transition: border-color 0.15s;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .item:active {
   border-color: #333;
-}
-
-.itemTitle {
-  font-size: 16px;
-  font-weight: 600;
 }
 
 /* Тонкий скроллбар (WebKit / Chromium — Edge, Chrome, Samsung Internet) */
