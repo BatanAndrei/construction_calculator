@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 import styles from "./FencesCalcPage.module.css";
 
 const FencesCalcPage = () => {
@@ -33,9 +34,9 @@ const FencesCalcPage = () => {
   if (works.length === 0) {
     return (
       <div className={styles.page}>
-        <button className={styles.back} onClick={() => navigate("/work/zabor")}>
+        <Button variant="back" onClick={() => navigate("/work/zabor")}>
           ← Назад
-        </button>
+        </Button>
         <p className={styles.empty}>Работы не выбраны</p>
       </div>
     );
@@ -43,9 +44,9 @@ const FencesCalcPage = () => {
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate("/work/zabor")}>
+      <Button variant="back" onClick={() => navigate("/work/zabor")}>
         ← Назад
-      </button>
+      </Button>
 
       <h1 className={styles.title}>Забор — объёмы</h1>
       <p className={styles.subtitle}>Укажите объём по каждой работе</p>
@@ -83,9 +84,9 @@ const FencesCalcPage = () => {
         />
       </div>
 
-      <button className={styles.calculate} onClick={handleCalculate}>
+      <Button variant="primary" onClick={handleCalculate}>
         Рассчитать
-      </button>
+      </Button>
 
       {total !== null && (
         <div className={styles.total}>

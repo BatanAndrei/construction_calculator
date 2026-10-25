@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROOF_WORKS } from "../../constants/works";
+import Button from "../../components/Button/Button";
 import styles from "./RoofPage.module.css";
 
 const RoofPage = () => {
@@ -20,9 +21,9 @@ const RoofPage = () => {
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate("/")}>
+      <Button variant="back" onClick={() => navigate("/")}>
         ← Назад
-      </button>
+      </Button>
 
       <h1 className={styles.title}>Крыша</h1>
       <p className={styles.subtitle}>Выберите работы</p>
@@ -43,13 +44,13 @@ const RoofPage = () => {
         ))}
       </ul>
 
-      <button
-        className={styles.next}
+      <Button
+        variant="primary"
         disabled={selected.length === 0}
         onClick={handleNext}
       >
         Далее
-      </button>
+      </Button>
     </div>
   );
 };

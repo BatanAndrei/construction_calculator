@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { WORKS } from "../../constants/works";
+import Button from "../../components/Button/Button";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
@@ -13,13 +14,13 @@ const HomePage = () => {
       <ul className={styles.list}>
         {WORKS.map((work) => (
           <li key={work.id}>
-            <button
+            <Button
               className={styles.item}
               onClick={() => navigate(`/work/${work.id}`)}
             >
               <span className={styles.itemTitle}>{work.title}</span>
               <span className={styles.itemDesc}>{work.desc}</span>
-            </button>
+            </Button>
           </li>
         ))}
       </ul>

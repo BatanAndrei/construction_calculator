@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 import styles from "./TerraceCalcPage.module.css";
 
 const TerraceCalcPage = () => {
@@ -33,12 +34,9 @@ const TerraceCalcPage = () => {
   if (works.length === 0) {
     return (
       <div className={styles.page}>
-        <button
-          className={styles.back}
-          onClick={() => navigate("/work/terassa")}
-        >
+        <Button variant="back" onClick={() => navigate("/work/terassa")}>
           ← Назад
-        </button>
+        </Button>
         <p className={styles.empty}>Работы не выбраны</p>
       </div>
     );
@@ -46,9 +44,9 @@ const TerraceCalcPage = () => {
 
   return (
     <div className={styles.page}>
-      <button className={styles.back} onClick={() => navigate("/work/terassa")}>
+      <Button variant="back" onClick={() => navigate("/work/terassa")}>
         ← Назад
-      </button>
+      </Button>
 
       <h1 className={styles.title}>Терасса — объёмы</h1>
       <p className={styles.subtitle}>Укажите объём по каждой работе</p>
@@ -86,9 +84,9 @@ const TerraceCalcPage = () => {
         />
       </div>
 
-      <button className={styles.calculate} onClick={handleCalculate}>
+      <Button variant="primary" onClick={handleCalculate}>
         Рассчитать
-      </button>
+      </Button>
 
       {total !== null && (
         <div className={styles.total}>
