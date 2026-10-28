@@ -17,14 +17,14 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
 
   const handleChange = (id, value) => {
     setVolumes((prev) => ({ ...prev, [id]: value }));
-    setResult(null);
   };
 
   const handleCalculate = () => {
-    const worksSum = works.reduce((acc, work) => {
+    const rows = works.map((work) => {
       const qty = Number(volumes[work.id]) || 0;
-      return acc + qty * work.price;
-    }, 0);
+      return { ...work, qty, sum: qty * work.price };
+    });
+    const worksSum = rows.reduce((acc, row) => acc + row.sum, 0);
     const extraSum = (worksSum * EXTRA_PERCENT) / 100;
     const total = worksSum + extraSum;
 
@@ -34,7 +34,11 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
       playCoinSound();
     }
 
-    setResult({ worksSum, extraSum, total });
+    setResult({ rows, worksSum, extraSum, total });
+  };
+
+  const handleEdit = () => {
+    setResult(null);
   };
 
   if (works.length === 0) {
@@ -55,32 +59,54 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
       </Button>
 
       <h1 className={styles.title}>{title}</h1>
-      <p className={styles.subtitle}>{subtitle}</p>
+      <p className={styles.subtitle}>
+        {result === null ? subtitle : "Смета"}
+      </p>
 
       <ul className={styles.list}>
-        {works.map((work) => (
-          <li key={work.id} className={styles.row}>
-            <div className={styles.rowInfo}>
-              <span className={styles.rowTitle}>{work.title}</span>
-              <span className={styles.rowPrice}>
-                {formatMoney(work.price)} Br / {work.unit}
-              </span>
-            </div>
-            <input
-              className={styles.input}
-              type="number"
-              min="0"
-              placeholder="0"
-              value={volumes[work.id] || ""}
-              onChange={(e) => handleChange(work.id, e.target.value)}
-            />
-          </li>
-        ))}
+        {result === null
+          ? works.map((work) => (
+              <li key={work.id} className={styles.row}>
+                <div className={styles.rowInfo}>
+                  <span className={styles.rowTitle}>{work.title}</span>
+                  <span className={styles.rowPrice}>
+                    {formatMoney(work.price)} Br / {work.unit}
+                  </span>
+                </div>
+                <input
+                  className={styles.input}
+                  type="number"
+                  min="0"
+                  placeholder="0"
+                  value={volumes[work.id] || ""}
+                  onChange={(e) => handleChange(work.id, e.target.value)}
+                />
+              </li>
+            ))
+          : result.rows.map((row) => (
+              <li key={row.id} className={styles.row}>
+                <div className={styles.rowInfo}>
+                  <span className={styles.rowTitle}>{row.title}</span>
+                  <span className={styles.rowPrice}>
+                    {row.qty} {row.unit} × {formatMoney(row.price)} Br
+                  </span>
+                </div>
+                <span className={styles.rowSum}>
+                  {formatMoney(row.sum)} Br
+                </span>
+              </li>
+            ))}
       </ul>
 
-      <Button variant="primary" onClick={handleCalculate}>
-        Рассчитать
-      </Button>
+      {result === null ? (
+        <Button variant="primary" onClick={handleCalculate}>
+          Рассчитать
+        </Button>
+      ) : (
+        <Button variant="back" onClick={handleEdit}>
+          ← Изменить
+        </Button>
+      )}
 
       {result !== null && (
         <div className={styles.total}>
