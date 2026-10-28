@@ -99,7 +99,7 @@ const isDesktop = window.innerWidth > 768;
               <tr>
                 <th className={styles.colNum}>№</th>
                 <th className={styles.colName}>Работа</th>
-                <th className={styles.colQty}>Кол</th>
+                <th className={styles.colQty}>Кол.</th>
                 <th className={styles.colPrice}>Цена</th>
                 <th className={styles.colSum}>Сумма</th>
               </tr>
