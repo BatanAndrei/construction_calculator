@@ -18,34 +18,34 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
 
   const printRef = useRef(null);
 
-const handlePrint = useReactToPrint({
-  contentRef: printRef,
-});
+  const handlePrint = useReactToPrint({
+    contentRef: printRef,
+  });
 
-const handleShare = () => {
-  const lines = result.rows.map(
-    (row, i) =>
-      `${i + 1}. ${row.title} — ${row.qty} ${row.unit} × ${formatMoney(row.price)} Br = ${formatMoney(row.sum)} Br`
-  );
+  const handleShare = () => {
+    const lines = result.rows.map(
+      (row, i) =>
+        `${i + 1}. ${row.title} — ${row.qty} ${row.unit} × ${formatMoney(row.price)} Br = ${formatMoney(row.sum)} Br`
+    );
 
-  const text = [
-    `СМЕТА: ${title}`,
-    "────────────────────",
-    ...lines,
-    "────────────────────",
-    `Итого: ${formatMoney(result.worksSum)} Br`,
-    `Непредвиденные (${EXTRA_PERCENT}%): ${formatMoney(result.extraSum)} Br`,
-    `ВСЕГО: ${formatMoney(result.total)} Br`,
-  ].join("\n");
+    const text = [
+      `СМЕТА: ${title}`,
+      "────────────────────",
+      ...lines,
+      "────────────────────",
+      `Итого: ${formatMoney(result.worksSum)} Br`,
+      `Непредвиденные (${EXTRA_PERCENT}%): ${formatMoney(result.extraSum)} Br`,
+      `ВСЕГО: ${formatMoney(result.total)} Br`,
+    ].join("\n");
 
-  if (navigator.share) {
-    navigator.share({ title: "Смета", text }).catch(() => {});
-  } else {
-    navigator.clipboard.writeText(text);
-  }
-};
+    if (navigator.share) {
+      navigator.share({ title: "Смета", text }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text);
+    }
+  };
 
-const isDesktop = window.innerWidth > 768;
+  const isDesktop = window.innerWidth > 768;
 
   const handleChange = (id, value) => {
     setVolumes((prev) => ({ ...prev, [id]: value }));
@@ -112,8 +112,12 @@ const isDesktop = window.innerWidth > 768;
                     {row.title}
                     <span className={styles.unit}></span>
                   </td>
-                  <td className={styles.colQty}>{row.qty} {row.unit}</td>
-                  <td className={styles.colPrice}>{formatMoney(row.price)} Br</td>
+                  <td className={styles.colQty}>
+                    {row.qty} {row.unit}
+                  </td>
+                  <td className={styles.colPrice}>
+                    {formatMoney(row.price)} Br
+                  </td>
                   <td className={styles.colSum}>{formatMoney(row.sum)} Br</td>
                 </tr>
               ))}
@@ -148,42 +152,42 @@ const isDesktop = window.innerWidth > 768;
         </div>
         <div className={styles.actions}>
           <Button variant="back" onClick={handleEdit}>
-    ← Изменить
-  </Button>
-  <Button variant="back" onClick={handleShare}  title="Отправить">
-    <svg
-      className={styles.icon}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 2 11 13" />
-      <path d="M22 2 15 22l-4-9-9-4 20-7z" />
-    </svg>
-  </Button>
-  {isDesktop && (
-    <Button variant="back" onClick={handlePrint} title="Печать">
-      <svg
-        className={styles.icon}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="6 9 6 2 18 2 18 9" />
-        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-        <rect x="6" y="14" width="12" height="8" />
-      </svg>
-    </Button>
-  )}
+            ← Изменить
+          </Button>
+          <Button variant="back" onClick={handleShare} title="Отправить">
+            <svg
+              className={styles.icon}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 2 11 13" />
+              <path d="M22 2 15 22l-4-9-9-4 20-7z" />
+            </svg>
+          </Button>
+          {isDesktop && (
+            <Button variant="back" onClick={handlePrint} title="Печать">
+              <svg
+                className={styles.icon}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 6 2 18 2 18 9" />
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                <rect x="6" y="14" width="12" height="8" />
+              </svg>
+            </Button>
+          )}
+        </div>
       </div>
-      </div>
- );
+    );
   }
   // ─── Режим ввода ───
   return (
