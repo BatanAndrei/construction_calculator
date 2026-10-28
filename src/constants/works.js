@@ -1,3 +1,5 @@
+export const EXTRA_PERCENT = 15;
+
 export const WORKS = [
   { id: 'zabor', title: 'Забор' },
   { id: 'krysha', title: 'Крыша' },

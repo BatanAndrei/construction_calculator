@@ -14,15 +14,6 @@
 
 .back {
   flex-shrink: 0;
-  background: none;
-  border: none;
-  color: #666;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 8px 0;
-  margin-bottom: 8px;
-  align-self: flex-start;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .title,
@@ -95,70 +86,46 @@
   background: #fff;
   -webkit-appearance: none;
   appearance: none;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-}
-
-.extra {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
-.extraLabel {
-  font-size: 16px;
-}
-
-.calculate {
-  flex-shrink: 0;
-  width: 100%;
-  min-height: 52px;
-  padding: 14px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background: #333;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: opacity 0.15s;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.calculate:hover {
-  opacity: 0.85;
+  border-color: #333;
 }
 
 .total {
   flex-shrink: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-top: 16px;
   padding: 16px;
   background: #f5f5f5;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   font-size: 16px;
 }
 
 .totalValue {
   font-size: 22px;
   font-weight: 700;
-  color: var(--accent);
+}
+
+.extraLabel {
+  font-size: 13px;
+  color: #666;
+}
+
+.extraValue {
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
 }
 
 .empty {
@@ -205,16 +172,7 @@
     padding: 9px;
   }
 
-  .extra {
-    padding: 14px;
-  }
-
-  .extraLabel {
-    font-size: 15px;
-  }
-
   .totalValue {
     font-size: 20px;
-    color: var(--accent);
   }
 }

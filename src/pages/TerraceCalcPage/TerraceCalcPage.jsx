@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { playCoinSound } from "../../utils/coinSound";
 import { playPukSound } from "../../utils/pukSound";
+import { EXTRA_PERCENT } from "../../constants/works";
+import { formatMoney } from "../../helpers/helpers";
 import styles from "./TerraceCalcPage.module.css";
 
 const TerraceCalcPage = () => {
@@ -11,16 +13,10 @@ const TerraceCalcPage = () => {
   const works = location.state?.works || [];
 
   const [volumes, setVolumes] = useState({});
-  const [extra, setExtra] = useState("");
-  const [total, setTotal] = useState(null);
+  const [result, setResult] = useState(null);
 
   const handleChange = (id, value) => {
     setVolumes((prev) => ({ ...prev, [id]: value }));
-    setTotal(null);
-  };
-
-  const handleExtraChange = (value) => {
-    setExtra(value);
     setTotal(null);
   };
 
@@ -29,16 +25,16 @@ const TerraceCalcPage = () => {
       const qty = Number(volumes[work.id]) || 0;
       return acc + qty * work.price;
     }, 0);
-    const extraSum = Number(extra) || 0;
-    const result = worksSum + extraSum;
+    const extraSum = (worksSum * EXTRA_PERCENT) / 100;
+    const total = worksSum + extraSum;
 
-    if (result === 0) {
+    if (total === 0) {
       playPukSound();
     } else {
       playCoinSound();
     }
 
-    setTotal(result);
+    setResult({ worksSum, extraSum, total });
   };
 
   if (works.length === 0) {
@@ -82,28 +78,26 @@ const TerraceCalcPage = () => {
         ))}
       </ul>
 
-      <div className={styles.extra}>
-        <span className={styles.extraLabel}>Непредвиденные</span>
-        <input
-          className={styles.input}
-          type="number"
-          min="0"
-          placeholder="0"
-          value={extra}
-          onChange={(e) => handleExtraChange(e.target.value)}
-        />
-      </div>
-
       <Button variant="primary" onClick={handleCalculate}>
         Рассчитать
       </Button>
 
-      {total !== null && (
+      {result !== null && (
         <div className={styles.total}>
-          <span>Итого:</span>
-          <span className={styles.totalValue}>
-            {total.toLocaleString("ru-RU")} Br
-          </span>
+          <div className={styles.totalRow}>
+            <span>Итого:</span>
+            <span className={styles.totalValue}>
+              {formatMoney(result.total)} Br
+            </span>
+          </div>
+          <div className={styles.totalRow}>
+            <span className={styles.extraLabel}>
+              в том числе непредвиденные ({EXTRA_PERCENT}%):
+            </span>
+            <span className={styles.extraValue}>
+              {formatMoney(result.extraSum)} Br
+            </span>
+          </div>
         </div>
       )}
     </div>
