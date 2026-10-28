@@ -80,9 +80,9 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
                   <td className={styles.colNum}>{index + 1}</td>
                   <td className={styles.colName}>
                     {row.title}
-                    <span className={styles.unit}> / {row.unit}</span>
+                    <span className={styles.unit}></span>
                   </td>
-                  <td className={styles.colQty}>{row.qty}</td>
+                  <td className={styles.colQty}>{row.qty} {row.unit}</td>
                   <td className={styles.colPrice}>{formatMoney(row.price)} Br</td>
                   <td className={styles.colSum}>{formatMoney(row.sum)} Br</td>
                 </tr>
