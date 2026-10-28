@@ -70,8 +70,8 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
                 <th className={styles.colNum}>№</th>
                 <th className={styles.colName}>Наименование</th>
                 <th className={styles.colQty}>Кол-во</th>
-                <th className={styles.colPrice}>Цена, Br</th>
-                <th className={styles.colSum}>Сумма, Br</th>
+                <th className={styles.colPrice}>Цена</th>
+                <th className={styles.colSum}>Сумма</th>
               </tr>
             </thead>
             <tbody>
@@ -83,34 +83,34 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
                     <span className={styles.unit}> / {row.unit}</span>
                   </td>
                   <td className={styles.colQty}>{row.qty}</td>
-                  <td className={styles.colPrice}>{formatMoney(row.price)}</td>
-                  <td className={styles.colSum}>{formatMoney(row.sum)}</td>
+                  <td className={styles.colPrice}>{formatMoney(row.price)} Br</td>
+                  <td className={styles.colSum}>{formatMoney(row.sum)} Br</td>
                 </tr>
               ))}
             </tbody>
             <tfoot>
               <tr>
                 <td colSpan={4} className={styles.footLabel}>
-                  Итого
+                  Итого:
                 </td>
                 <td className={styles.footValue}>
-                  {formatMoney(result.worksSum)}
+                  {formatMoney(result.worksSum)} Br
                 </td>
               </tr>
               <tr>
                 <td colSpan={4} className={styles.footLabel}>
-                  в том числе непредвиденные ({EXTRA_PERCENT}%)
+                  в том числе непредвиденные ({EXTRA_PERCENT}%):
                 </td>
                 <td className={styles.footValue}>
-                  {formatMoney(result.extraSum)}
+                  {formatMoney(result.extraSum)} Br
                 </td>
               </tr>
               <tr className={styles.footTotal}>
                 <td colSpan={4} className={styles.footLabel}>
-                  Всего
+                  Всего:
                 </td>
                 <td className={styles.footValue}>
-                  {formatMoney(result.total)}
+                  {formatMoney(result.total)} Br
                 </td>
               </tr>
             </tfoot>
