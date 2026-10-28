@@ -151,10 +151,6 @@
   color: #888;
 }
 
-.colName {
-  /* основная колонка — занимает всё свободное место */
-}
-
 .colQty {
   width: 60px;
   text-align: right;
