@@ -152,9 +152,10 @@
 }
 
 .colName {
-  width: 100px;
+  width: auto;
   text-align: left;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .colQty {

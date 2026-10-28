@@ -25,16 +25,17 @@ const handlePrint = useReactToPrint({
 const handleShare = () => {
   const lines = result.rows.map(
     (row, i) =>
-      `${i + 1}. ${row.title} — ${row.qty} ${row.unit} × ${formatMoney(row.price)} = ${formatMoney(row.sum)} Br`
+      `${i + 1}. ${row.title} — ${row.qty} ${row.unit} × ${formatMoney(row.price)} Br = ${formatMoney(row.sum)} Br`
   );
+
   const text = [
-    `Смета: ${title}`,
-    "",
+    `СМЕТА: ${title}`,
+    "────────────────────",
     ...lines,
-    "",
+    "────────────────────",
     `Итого: ${formatMoney(result.worksSum)} Br`,
-    `в том числе непредвиденные (${EXTRA_PERCENT}%): ${formatMoney(result.extraSum)} Br`,
-    `Всего: ${formatMoney(result.total)} Br`,
+    `Непредвиденные (${EXTRA_PERCENT}%): ${formatMoney(result.extraSum)} Br`,
+    `ВСЕГО: ${formatMoney(result.total)} Br`,
   ].join("\n");
 
   if (navigator.share) {
