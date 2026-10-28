@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import { playCoinSound } from "../../utils/coinSound";
 import { playPukSound } from "../../utils/pukSound";
 import { EXTRA_PERCENT } from "../../constants/works";
 import { formatMoney } from "../../helpers/helpers";
+import { useReactToPrint } from "react-to-print";
 import styles from "./WorksCalcPage.module.css";
 
 const WorksCalcPage = ({ title, subtitle, backTo }) => {
@@ -14,6 +15,36 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
 
   const [volumes, setVolumes] = useState({});
   const [result, setResult] = useState(null);
+
+  const printRef = useRef(null);
+
+const handlePrint = useReactToPrint({
+  contentRef: printRef,
+});
+
+const handleShare = () => {
+  const lines = result.rows.map(
+    (row, i) =>
+      `${i + 1}. ${row.title} — ${row.qty} ${row.unit} × ${formatMoney(row.price)} = ${formatMoney(row.sum)} Br`
+  );
+  const text = [
+    `Смета: ${title}`,
+    "",
+    ...lines,
+    "",
+    `Итого: ${formatMoney(result.worksSum)} Br`,
+    `в том числе непредвиденные (${EXTRA_PERCENT}%): ${formatMoney(result.extraSum)} Br`,
+    `Всего: ${formatMoney(result.total)} Br`,
+  ].join("\n");
+
+  if (navigator.share) {
+    navigator.share({ title: "Смета", text }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(text);
+  }
+};
+
+const isDesktop = window.innerWidth > 768;
 
   const handleChange = (id, value) => {
     setVolumes((prev) => ({ ...prev, [id]: value }));
@@ -40,7 +71,6 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
   const handleEdit = () => {
     setResult(null);
   };
-
   if (works.length === 0) {
     return (
       <div className={styles.page}>
@@ -59,12 +89,11 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
         <Button variant="back" onClick={() => navigate(backTo)}>
           ← Назад
         </Button>
-
         <div className={styles.estimate}>
           <h1 className={styles.estimateTitle}>Смета</h1>
           <p className={styles.estimateSubtitle}>{title}</p>
 
-          <table className={styles.estimateTable}>
+          <table className={styles.estimateTable} ref={printRef}>
             <thead>
               <tr>
                 <th className={styles.colNum}>№</th>
@@ -116,26 +145,30 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
             </tfoot>
           </table>
         </div>
-
         <div className={styles.actions}>
           <Button variant="back" onClick={handleEdit}>
-            ← Изменить
-          </Button>
-        </div>
+    ← Изменить
+  </Button>
+  <Button variant="primary" onClick={handleShare}>
+    Отправить
+  </Button>
+  {isDesktop && (
+    <Button variant="primary" onClick={handlePrint}>
+      Печать
+    </Button>
+  )}
       </div>
-    );
+      </div>
+ );
   }
-
   // ─── Режим ввода ───
   return (
     <div className={styles.page}>
       <Button variant="back" onClick={() => navigate(backTo)}>
         ← Назад
       </Button>
-
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.subtitle}>{subtitle}</p>
-
       <ul className={styles.list}>
         {works.map((work) => (
           <li key={work.id} className={styles.row}>
@@ -156,7 +189,6 @@ const WorksCalcPage = ({ title, subtitle, backTo }) => {
           </li>
         ))}
       </ul>
-
       <Button variant="primary" onClick={handleCalculate}>
         Рассчитать
       </Button>
