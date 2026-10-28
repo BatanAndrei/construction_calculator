@@ -147,7 +147,14 @@
 
 .colNum {
   width: 28px;
+  text-align: left;
   color: #888;
+}
+
+.colName {
+  width: 100px;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .colQty {
@@ -312,5 +319,37 @@
 
   .footTotal .footValue {
     font-size: 16px;
+  }
+}
+
+@media print {
+  @page {
+    margin: 15mm;
+  }
+
+  .estimateTable {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .estimateTable th,
+  .estimateTable td {
+    padding: 6px 8px;
+  }
+
+  .colNum {
+    width: 32px;
+  }
+
+  .colQty {
+    width: 60px;
+  }
+
+  .colPrice {
+    width: 90px;
+  }
+
+  .colSum {
+    width: 100px;
   }
 }
