@@ -127,6 +127,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  table-layout: fixed;
 }
 
 .estimateTable th {
@@ -136,38 +137,58 @@
   text-transform: uppercase;
   letter-spacing: 0.03em;
   color: #888;
-  padding: 8px 4px;
+  padding: 8px 6px;
   border-bottom: 2px solid #333;
+  vertical-align: bottom;
 }
 
 .estimateTable td {
-  padding: 10px 4px;
+  padding: 10px 6px;
   border-bottom: 1px solid #eee;
   vertical-align: top;
 }
 
+/* ширины колонок — общие для th и td */
+
 .colNum {
-  width: 28px;
+  width: 36px;
+  text-align: center;
   color: #888;
 }
 
+.colName {
+  width: auto;
+  text-align: left;
+}
+
 .colQty {
-  width: 60px;
+  width: 64px;
   text-align: right;
   white-space: nowrap;
 }
 
 .colPrice {
-  width: 90px;
+  width: 92px;
   text-align: right;
   white-space: nowrap;
 }
 
 .colSum {
-  width: 100px;
+  width: 108px;
   text-align: right;
   white-space: nowrap;
   font-weight: 600;
+}
+
+/* шапка числовых колонок — вправо, как значения */
+.estimateTable th.colQty,
+.estimateTable th.colPrice,
+.estimateTable th.colSum {
+  text-align: right;
+}
+
+.estimateTable th.colNum {
+  text-align: center;
 }
 
 .unit {
@@ -177,7 +198,7 @@
 
 .estimateTable tfoot td {
   border-bottom: none;
-  padding: 8px 4px;
+  padding: 8px 6px;
 }
 
 .estimateTable tfoot tr:first-child td {
@@ -270,27 +291,31 @@
 
   .estimateTable th {
     font-size: 11px;
-    padding: 6px 3px;
+    padding: 6px 4px;
   }
 
   .estimateTable td {
-    padding: 8px 3px;
+    padding: 8px 4px;
+  }
+
+  .estimateTable tfoot td {
+    padding: 8px 4px;
   }
 
   .colNum {
-    width: 20px;
+    width: 28px;
   }
 
   .colQty {
-    width: 44px;
+    width: 48px;
   }
 
   .colPrice {
-    width: 72px;
+    width: 76px;
   }
 
   .colSum {
-    width: 84px;
+    width: 88px;
   }
 
   .footTotal .footValue {
