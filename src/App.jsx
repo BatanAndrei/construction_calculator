@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import HomePage from "./pages/HomePage/HomePage";
 import FencesPage from "./pages/FencesPage/FencesPage";
 import FencesCalcPage from "./pages/FencesCalcPage/FencesCalcPage";
@@ -7,9 +8,20 @@ import RoofCalcPage from "./pages/RoofCalcPage/RoofCalcPage";
 import TerracePage from "./pages/TerracePage/TerracePage";
 import TerraceCalcPage from "./pages/TerraceCalcPage/TerraceCalcPage";
 
+const StartRedirect = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/");
+  }, []);
+
+  return null;
+};
+
 const App = () => {
   return (
     <BrowserRouter>
+    <StartRedirect />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/work/zabor" element={<FencesPage />} />
